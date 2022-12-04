@@ -9,12 +9,13 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build... \n'
-                sh "ls -lisa"
+                sh "docker-compose -f build-compose.yml run -rm compile"
             }
         }
         stage('Test') {
             steps {
                 echo 'Runningg Test.. \n'
+                sh "docker-compose -f build-compose.yml run -rm test"
             }
         }
         stage('Deploy') {
