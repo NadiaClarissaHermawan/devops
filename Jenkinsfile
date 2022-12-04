@@ -5,26 +5,16 @@ pipeline {
     
     agent {
         docker {
-            image '{PHP_DOCKER_IMG}'
+            image 'php:7-fpm'
         }
     }
 
     stages {
-        stage('Build') {
-            steps {
-                echo 'Build... \n'
-                sh "docker-compose -f build-compose.yml run -rm compile"
-            }
-        }
         stage('Test') {
             steps {
-                echo 'Runningg Test.. \n'
-                sh "docker-compose -f build-compose.yml run -rm test"
-            }
-        }
-        stage('Deploy') {
-            steps {
-                echo 'Successs... \n'
+                echo 'Check PHP ver... \n'
+                sh "php --version"
+                // sh "docker-compose -f build-compose.yml run -rm compile"
             }
         }
     }
