@@ -9,7 +9,7 @@ pipeline {
         stage('Build') {
             steps {
                 echo 'Build... \n'
-                sh "docker-compose -f build-compose.yml run -rm compile"
+                sh "docker-compose -f docker-compose.yml run -rm compile"
             }
         }
         stage('Test') {
