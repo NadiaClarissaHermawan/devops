@@ -3,7 +3,7 @@ pipeline {
         PATH = "$PATH:/devasc/jenkinsdonnut/docker-compose"
     }
     
-    agent docker
+    agent {docker}
 
     stages {
         stage('Build') {
